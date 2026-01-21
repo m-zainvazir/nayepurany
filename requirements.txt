@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+langchain==0.3.27
+langchain_community==0.3.27
+langchain_core==0.3.72
+langchain_experimental==0.3.4
+langchain_groq==0.3.6
+langchain_huggingface==0.3.1
+pydantic
+python-dotenv==1.1.1
+sentence_transformers==5.0.0
+torch==2.9.0
+transformers==4.54.0
+youtube_transcript_api==1.2.3
+faiss-cpu
+python-multipart
