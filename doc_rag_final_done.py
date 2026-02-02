@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Form, Request
 from fastapi.responses import HTMLResponse
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_groq import ChatGroq
 from langchain_community.vectorstores import FAISS
 from langchain_core.prompts import PromptTemplate
@@ -49,7 +49,7 @@ You are an assistant for a clothing and thrift store.
 Your goal is to provide VERY SHORT, helpful responses.
 
 STRICT RULES:
-1. Answer in 1-2 shortsentences MAXIMUM
+1. Answer in 1-2 short sentences MAXIMUM
 2. Use context when relevant, otherwise use your knowledge
 3. Be direct and concise, no explanations
 4. If suggesting follow-ups, add ONLY ONE brief suggestion at the end
@@ -280,6 +280,10 @@ HTML_FORM = """
             
             // Hide typing indicator on page load (in case of page refresh)
             document.getElementById('typingIndicator').style.display = 'none';
+
+            // --- FIX STARTS HERE ---
+            document.getElementById('chatInput').focus();  // <--- ADD THIS LINE
+            // --- FIX ENDS HERE ---
         }}
     </script>
 </head>
@@ -379,7 +383,7 @@ async def chatbot_widget():
         </style>
     </head>
     <body>
-        <iframe id="chatbot" src="/chatbot" allow="clipboard-write"></iframe>
+        <iframe id="chatbot" src="/" allow="clipboard-write"></iframe>
     </body>
     </html>
     """
